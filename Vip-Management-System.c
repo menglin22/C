@@ -148,68 +148,71 @@ int main()
     system("pause");
     up:
     system("cls");
-    printf("请输入用户名(输入exit退出):");
-    scanf("%s",&user);
-    if(!strcmp(user,"exit"))
-        _exit();
-    printf("请输入密码:");
-    scanf("%s",&passwd);
-    if(!strcmp(user,vip.users[0]))
-        if(!strcmp(passwd,vip.passwds[0]))
-        {
-            printf("*********登录成功,欢迎管理员*********\n");
-            while(1)
-            {
-                printf("*********操作目录*********\n"
-                       "0.返回界面\n"
-                       "1.添加会员信息\n"
-                       "2.删除会员信息\n"
-                       "3.查看会员信息\n"
-                       "4.修改会员信息\n"
-                       "5.修改管理员信息\n"
-                       "6.退出程序\n"
-                      );
-                printf(">>>");
-                scanf("%d",&option);
-                switch(option)
-                {
-                    case 0:goto up;break;
-                    case 1:printf("*********添加会员操作*********\n");add();break;
-                    case 2:printf("*********删除会员操作*********\n");close();break;
-                    case 3:printf("*********查看会员操作*********\n");show(user_i);break;
-                    case 4:printf("*********修改会员操作*********\n");amend();break;
-                    case 5:printf("*********修改管理员操作*********\n");amend_admin();break;
-                    case 6:_exit();break;
-                }
-            }
-        }
-    while(i<=user_i)
+    while(1)
     {
-        str=strstr(vip.users[i],user);
-        if(str!=NULL)
-            break;
-        i++;
-    }
-    if(str!=NULL)
-        if(!strcmp(vip.passwds[i],passwd))
-        {
-            printf("*********登陆成功，欢迎%s*********\n",user);
-            while(1)
+        printf("请输入用户名(输入exit退出):");
+        scanf("%s",&user);
+        if(!strcmp(user,"exit"))
+            _exit();
+        printf("请输入密码:");
+        scanf("%s",&passwd);
+        if(!strcmp(user,vip.users[0]))
+            if(!strcmp(passwd,vip.passwds[0]))
             {
-                printf("*********操作目录*********\n"
-                       "0.返回界面\n"
-                       "1.查看个人信息\n"
-                       "2.退出程序\n"
-                      );
-                printf(">>>");
-                scanf("%d",&option);
-                switch(option)
+                printf("*********登录成功,欢迎管理员*********\n");
+                while(1)
                 {
-                    case 0:goto up;break;
-                    case 1:printf("*********查看个人信息操作*********\n");show_indivi(i);break;
-                    case 2:_exit();break;
+                    printf("*********操作目录*********\n"
+                        "0.返回界面\n"
+                        "1.添加会员信息\n"
+                        "2.删除会员信息\n"
+                        "3.查看会员信息\n"
+                        "4.修改会员信息\n"
+                        "5.修改管理员信息\n"
+                        "6.退出程序\n"
+                        );
+                    printf(">>>");
+                    scanf("%d",&option);
+                    switch(option)
+                    {
+                        case 0:goto up;break;
+                        case 1:printf("*********添加会员操作*********\n");add();break;
+                        case 2:printf("*********删除会员操作*********\n");close();break;
+                        case 3:printf("*********查看会员操作*********\n");show(user_i);break;
+                        case 4:printf("*********修改会员操作*********\n");amend();break;
+                        case 5:printf("*********修改管理员操作*********\n");amend_admin();break;
+                        case 6:_exit();break;
+                    }
                 }
             }
+        while(i<=user_i)
+        {
+            str=strstr(vip.users[i],user);
+            if(str!=NULL)
+                break;
+            i++;
         }
+        if(str!=NULL)
+            if(!strcmp(vip.passwds[i],passwd))
+            {
+                printf("*********登陆成功，欢迎%s*********\n",user);
+                while(1)
+                {
+                    printf("*********操作目录*********\n"
+                        "0.返回界面\n"
+                        "1.查看个人信息\n"
+                        "2.退出程序\n"
+                        );
+                    printf(">>>");
+                    scanf("%d",&option);
+                    switch(option)
+                    {
+                        case 0:goto up;break;
+                        case 1:printf("*********查看个人信息操作*********\n");show_indivi(i);break;
+                        case 2:_exit();break;
+                    }
+                }
+            }
+    }
     return 0;
 }
