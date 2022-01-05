@@ -107,9 +107,7 @@ void amend()
     }
     if(str!=NULL)
     {
-        printf("请输入新用户名>>>");
-        scanf("%s",user);
-        if(user!=vip.users[0])
+        if(strcmp(vip.users[0],user)!=0)
         {
             strcpy(vip.users[i],user);
             printf("请输入新密码>>>");
